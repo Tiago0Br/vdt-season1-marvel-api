@@ -43,6 +43,18 @@ Cypress.Commands.add('getCharacters', () => {
     }).then(res => res)
 })
 
+// GET /characters/id
+Cypress.Commands.add('getCharacterById', id => {
+    cy.api({
+        method: 'GET',
+        url: `/characters/${id}`,
+        headers: {
+            Authorization: Cypress.env('token')
+        },
+        failOnStatusCode: false
+    }).then(res => res)
+})
+
 // GET /characteres com a Query String "name"
 Cypress.Commands.add('searchCharacters', name => {
     cy.api({
