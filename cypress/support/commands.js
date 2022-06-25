@@ -30,3 +30,34 @@ Cypress.Commands.add('postCharacter', payload => {
         failOnStatusCode: false
     }).then(res => res)
 })
+
+// GET /characters
+Cypress.Commands.add('getCharacters', () => {
+    cy.api({
+        method: 'GET',
+        url: '/characters',
+        headers: {
+            Authorization: Cypress.env('token')
+        },
+        failOnStatusCode: false
+    }).then(res => res)
+})
+
+// GET /characteres com a Query String "name"
+Cypress.Commands.add('searchCharacters', name => {
+    cy.api({
+        method: 'GET',
+        url: '/characters',
+        qs: {
+            name
+        },
+        headers: {
+            Authorization: Cypress.env('token')
+        },
+        failOnStatusCode: false
+    }).then(res => res)
+})
+
+Cypress.Commands.add('populateCharacters', characters => {
+    characters.forEach(cy.postCharacter)
+})
