@@ -6,12 +6,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: create-json
-        id: create-json
-        uses: jsdaniell/create-json@1.1.2
+      - uses: devops-actions/json-to-file@v1.0.0
         with:
-          name: "cypress.env.json"
           json: ${{ secrets.CYPRESS_ENV }}
+          filename: 'cypress.env.json'
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
