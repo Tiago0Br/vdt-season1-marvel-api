@@ -17,6 +17,7 @@ jobs:
       - name: Execute Shell Script
         run: |
           chmod +x ./back2thepast.sh
+          ./back2thepast.sh
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
