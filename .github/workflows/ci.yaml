@@ -12,6 +12,8 @@ jobs:
         with:
           json: ${{ secrets.CYPRESS_ENV }}
           filename: 'cypress.env.json'
+      - name: Install Curl
+        run: sudo apt install curl
       - name: Execute Shell Script
         run: |
           chmod +x ./back2thepast.sh
