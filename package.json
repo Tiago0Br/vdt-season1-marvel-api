@@ -4,7 +4,9 @@
   "description": "Projeto de automação de testes na API da Marvel do evento Viver de Teste",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress run"
+    "back2thepast": "sh ./back2thepast.sh",
+    "test": "npm run back2thepast && cypress run",
+    "cy:open": "npm run back2thepast && cypress open"
   },
   "repository": {
     "type": "git",

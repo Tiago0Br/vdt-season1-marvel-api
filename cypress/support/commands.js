@@ -28,7 +28,7 @@ Cypress.Commands.add('postCharacter', payload => {
         },
         body: payload,
         failOnStatusCode: false
-    }).then(res => res)
+    })
 })
 
 // GET /characters
@@ -40,7 +40,7 @@ Cypress.Commands.add('getCharacters', () => {
             Authorization: Cypress.env('token')
         },
         failOnStatusCode: false
-    }).then(res => res)
+    })
 })
 
 // GET /characters/id
@@ -52,7 +52,7 @@ Cypress.Commands.add('getCharacterById', id => {
             Authorization: Cypress.env('token')
         },
         failOnStatusCode: false
-    }).then(res => res)
+    })
 })
 
 // DELETE /characters/id
@@ -64,7 +64,7 @@ Cypress.Commands.add('deleteCharacterById', id => {
             Authorization: Cypress.env('token')
         },
         failOnStatusCode: false
-    }).then(res => res)
+    })
 })
 
 // GET /characteres com a Query String "name"
@@ -79,7 +79,7 @@ Cypress.Commands.add('searchCharacters', name => {
             Authorization: Cypress.env('token')
         },
         failOnStatusCode: false
-    }).then(res => res)
+    })
 })
 
 Cypress.Commands.add('populateCharacters', characters => {

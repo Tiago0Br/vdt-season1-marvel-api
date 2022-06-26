@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 describe('GET /characters', () => {
     const characters = [
         {
@@ -21,8 +22,6 @@ describe('GET /characters', () => {
     ]
 
     before(() => {
-        cy.setToken()
-        cy.back2ThePast()
         cy.populateCharacters(characters)
     })
 
@@ -54,8 +53,6 @@ describe('GET /characters/id', () => {
     }
 
     before(() => {
-        cy.setToken()
-        cy.back2ThePast()
         cy.postCharacter(character).then(({ body }) => {
             Cypress.env('characterId', body.character_id)
         })

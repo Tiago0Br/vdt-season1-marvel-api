@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 describe('DELETE /characters/id', () => {
     const character = {
         name: 'Jhonny Storm',
@@ -6,15 +7,14 @@ describe('DELETE /characters/id', () => {
         active: true
     }
 
-    before(() => {
-        cy.setToken()
-        cy.back2ThePast()
-        cy.postCharacter(character).then(({ body }) => {
-            Cypress.env('characterId', body.character_id)
-        })
-    })
-
+    
     context('Quanto tenho um personagem cadastrado', () => {
+        before(() => {
+            cy.postCharacter(character).then(({ body }) => {
+                Cypress.env('characterId', body.character_id)
+            })
+        })
+
         it('Deve remover o personagem pelo id', () => {
             cy.deleteCharacterById(Cypress.env('characterId')).then(res => {
                 expect(res.status).to.be.eql(204)

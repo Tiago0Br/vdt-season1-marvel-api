@@ -1,11 +1,6 @@
 /// <reference types="cypress" />
 import { invalidCharacters } from '../fixtures/characters.json'
 describe('POST /characters', () => {
-    before(() => {
-        cy.setToken()
-        cy.back2ThePast()
-    })
-
     it('Deve cadastrar um personagem', () => {
         const character = {
             name: 'Wanda Maximoff',
@@ -52,7 +47,8 @@ describe('POST /characters', () => {
                 cy.postCharacter(character)
                     .then(res => {
                         expect(res.status).to.be.eql(400)
-                        expect(res.body.validation.body.message).to.include(character.campo)
+                        expect(res.body.validation.body.message)
+                            .to.be.eql(`"${character.campo}" is required`)
                     })
             })
         })

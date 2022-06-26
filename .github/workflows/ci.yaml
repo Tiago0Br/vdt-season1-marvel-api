@@ -4,7 +4,7 @@ jobs:
   cypress-run:
     runs-on: ubuntu-20.04
     environment:
-      name: Variáveis de ambiente
+      name: Produção
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -12,6 +12,9 @@ jobs:
         with:
           json: ${{ secrets.CYPRESS_ENV }}
           filename: 'cypress.env.json'
+      - name: Execute Shell Script
+        run: |
+          chmod +x ./back2thepast.sh
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
