@@ -55,6 +55,18 @@ Cypress.Commands.add('getCharacterById', id => {
     }).then(res => res)
 })
 
+// DELETE /characters/id
+Cypress.Commands.add('deleteCharacterById', id => {
+    cy.api({
+        method: 'DELETE',
+        url: `/characters/${id}`,
+        headers: {
+            Authorization: Cypress.env('token')
+        },
+        failOnStatusCode: false
+    }).then(res => res)
+})
+
 // GET /characteres com a Query String "name"
 Cypress.Commands.add('searchCharacters', name => {
     cy.api({
